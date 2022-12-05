@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      <!-- <h1 @click="say('Hello~', $event)">{{ msg }}</h1> -->
+      <h1 @click="a(), b(), c()">Hello Vue!</h1>
+    </div>
+    <script>
+      const App = {
+        data() {
+          return {
+            msg: 'VUE!!!!'
+          }
+        },
+        methods: {
+          say(message, e) {
+            console.log(message, e)
+          },
+          a() {
+            console.log('A')
+          },
+          b() {
+            console.log('B')
+          },
+          c() {
+            console.log('C')
+          },
+        }
+      }
+
+      const vm = Vue.createApp(App).mount('#app')
+    </script>
+  </body>
+  </html>
