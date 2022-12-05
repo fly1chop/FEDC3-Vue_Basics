@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <title>Vue Basics</title>
+</head>
+<body>
+  <div id="app">
+    <h1>{{ msg }}</h1>
+  </div>
+  <script>
+    const App = {
+      data() {
+        return {
+          msg: 'Hello Vue!'
+        }
+      },
+      /*
+      beforeUnmount() {
+        console.log('beforeUnmount!', this.msg)
+        console.log(document.querySelector('h1'))
+      },
+      unmounted() {
+        console.log('unmounted!', this.msg)
+        console.log(document.querySelector('h1')) // null
+      }
+      */
+      /*
+      beforeUpdate() {
+        console.log('beforeUpdate!', this.msg) // this.msg is updated msg
+        console.log(document.querySelector('h1').textContent) // contains original: 'Hello Vue!'
+        // therefore, beforeUpdate() refers to update in DOM (NOT data)
+      },
+      updated() {
+        console.log('updated!', this.msg)
+        console.log(document.querySelector('h1').textContent) // contains updated textContent
+      }
+      */
+     /*
+      beforeCreate() {
+        console.log('beforeCreate!', this.msg) // this is undefined
+        console.log(document.querySelector('h1')) // null
+      },
+      created() {
+        console.log('created!', this.msg)
+        console.log(document.querySelector('h1')) // null
+      },
+      beforeMount() {
+        console.log('beforeMount!', this.msg)
+        console.log(document.querySelector('h1')) // null
+      },
+      mounted() {
+        console.log('mounted!', this.msg)
+        console.log(document.querySelector('h1')) // able to reach DOM API
+      }
+      */
+    }
+    const app = Vue.createApp(App)
+    const vm = app.mount('#app');
+    /*
+    // vue application
+    const app = Vue.createApp({
+      data() {
+        return {
+          msg: 'Hello Vue!!'
+        }
+      }
+    })
+    // vue instance
+    const vm = app.mount('#app');
+    vm.msg = 'Hello My name is Jane'
+    */
+  </script>
+</body>
+</html>
