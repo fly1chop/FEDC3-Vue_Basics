@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <title>Document</title>
+</head>
+<body>
+  <style>
+    [v-cloak] {
+      display: none;
+    }
+  </style>
+  <div id="app">
+    <button @click="toggle">Toggle</button>
+    <!-- v-show toggles css display: none -->
+    <!-- <h1 v-show="isShow">Hello Vue!</h1> -->
+    <h1 v-show="isShow" v-cloak>{{ msg }}</h1>
+    
+    <!-- v-if follows truthy/falsey values -->
+    <!-- <h1 v-if="isShow">Hello Vue!</h1> -->
+    <!-- <h2 v-else-if="1">Application...</h2> -->
+    <!-- <template v-else-if="1"> -->
+      <!-- use <template> tag to render only what's inside (not including outer shell div) -->
+      <!-- to add multiple lines -->
+      <!-- <h2>Application...</h2> -->
+      <!-- <p>1234</p> -->
+    <!-- </template> -->
+    <!-- <h2 v-else>Good Morning~</h2> -->
+  </div>
+  <script>
+    const App = {
+      data() {
+        return {
+          msg: 'Hello Vue~~',
+          isShow: true
+        }
+      },
+      methods: {
+        toggle() {
+          this.isShow = !this.isShow
+        }
+      }
+    }
+
+    const vm = Vue.createApp(App).mount('#app')
+  </script>
+</body>
+</html>
