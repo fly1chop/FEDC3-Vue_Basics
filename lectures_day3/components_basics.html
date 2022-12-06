@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      <!-- <component-name name="apple"></component-name>
+      <component-name name="banana"></component-name>
+      <component-name name="cherry"></component-name> -->
+      <component-name 
+        v-for="fruit in fruits" 
+        :key="fruit.id" 
+        :my-name="fruit.name"
+        @to-caps="toCaps(fruit, $event)">
+      </component-name>
+    </div>
+    <script>
+      const App = {
+        data() {
+          return {
+            fruits: [
+              { id: '1', name: 'apple' },
+              { id: '2', name: 'banana' },
+              { id: '3', name: 'cherry' }
+            ]
+          }
+        },
+        methods: {
+          toCaps(fruit, toCapName) {
+            console.log(fruit, toCapName)
+            fruit.name = toCapName
+          }
+        }
+      }
+
+      const app = Vue.createApp(App)
+      app.component('component-name', {
+        template: `<div @click="caps">{{ myName }}</div>`,
+        props: ['myName'],
+        methods: {
+          caps() {
+            // this.myName = this.myName.toUpperCase()
+            this.$emit('to-caps', this.myName.toUpperCase())
+          }
+        }
+      })
+      const vm = app.mount('#app')
+    </script>
+  </body>
+  </html>
