@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <title>Document</title>
+  </head>
+  <body>
+    <style>
+      .parent {
+        width: 200px;
+        height: 200px;
+        background-color: royalblue;
+        padding: 20px;
+      }
+      .child {
+        width: 100px;
+        height: 80px;
+        background-color: orange;
+      }
+      .scroll-parent {
+        width: 200px;
+        height: 200px;
+        overflow: auto;
+        border: 2px solid black;
+      }
+      .scroll-child {
+        font-size: 100px;
+      }
+    </style>
+    <a
+      href="https://vuejs.org/guide/essentials/event-handling.html#event-modifiers"
+      target="_blank"
+      >Link to Vue.js guide: Event Modifier</a
+    >
+    <div id="app">
+      <a href="https://google.com" target="_blank" @click.prevent.once="log">Using .prevent modifier to preventDefault() and .once modifier to trigger event only once</a>
+      <!-- <div class="parent" @click.capture="log"> -->
+      <div class="parent" @click.self="log">
+        Using .capture to useCapture Using .self to trigger event only if
+        event.target === e.currentTarget
+        <div class="child" @click.stop="log">
+          Using .stop modifier for v-on (stop bubbling propagation)
+        </div>
+      </div>
+      <div class="scroll-parent" @scroll.passive="logScroll">
+        Using .passive modifer will perform scroll and not wait for onScroll
+        event to complete (so it does not cause buffering while scrolling) **Do
+        not use .passive and .prevent together because .passive already
+        indicates browser that you do not intend to prevent event's default
+        behaviour
+        <div class="scroll-child" v-for="n in 15">{{ n }}</div>
+      </div>
+    </div>
+    <script>
+      const parentEl = document.querySelector(".parent");
+      parentEl.addEventListener("scroll", () => {}, { passive: true });
+      const App = {
+        data() {},
+        methods: {
+          log(e) {
+            console.log(e.currentTarget, e.target);
+          },
+          logScroll() {
+            for (let i = 0; i < 10000; i++) {
+              console.log(i);
+            }
+          },
+        },
+      };
+
+      const vm = Vue.createApp(App).mount("#app");
+    </script>
+  </body>
+</html>
