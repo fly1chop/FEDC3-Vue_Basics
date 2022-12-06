@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <title>Document</title>
+  </head>
+  <body>
+    <style>
+      .parent {
+        width: 200px;
+        height: 200px;
+        border: 4px solid;
+        overflow: auto;
+        padding: 20px;
+      }
+      .child {
+        font-size: 100px;
+      }
+    </style>
+    <a
+      href="https://vuejs.org/guide/essentials/event-handling.html#event-modifiers"
+      target="_blank"
+      >Link to Vue.js guide: Event Modifier</a
+    >
+    <div id="app">
+      <!-- <input @keyup.alt.arrow-down="log" /> -->
+      <!-- <input @keydown.meta.arrow-down="log" />To use .meta key, event must be @keydown -->
+      <input @keydown.arrow-down.exact="log" />Using .exact modifier only fire when arrow-down and no other keys are pressed
+      <!-- <button @click.exact="log">Click</button> -->
+      <button @click.right="log">Click</button>
+    </div>
+    <script>
+      const App = {
+        data() {},
+        methods: {
+          log(e) {
+            console.log(e);
+          },
+        },
+      };
+      const vm = Vue.createApp(App).mount("#app");
+    </script>
+  </body>
+</html>
