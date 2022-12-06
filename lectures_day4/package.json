@@ -2,14 +2,18 @@
   "name": "lectures_day4",
   "version": "1.0.0",
   "description": "",
-  "main": "main.js",
   "scripts": {
-    "start": "serve"
+    "start": "serve",
+    "dev": "parcel ./src/index.html",
+    "build": "parcel build ./src/index.html"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@parcel/transformer-vue": "^2.8.0",
+    "parcel": "^2.8.0",
+    "sass": "^1.56.1",
     "serve": "^14.1.2"
   },
   "dependencies": {
