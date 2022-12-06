@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      <!-- <h1>{{ msg }}</h1> -->
+      <!-- <input 
+        type="text" 
+        :value="msg"
+        @input="msg = $event.target.value" />This is to create 양방향 데이터 바인딩 with :msg in <h1> -->
+        <!-- <input v-model="msg">Using v-model directive simplifies the above step. HOWEVER, it does not work properly for korean. so use above method in that case -->
+
+      <!-- <input type="checkbox" v-model="checked" checked /> v-model's checked value overrides checked attribute of checkbox -->
+
+      <!-- <textarea v-model="msg" @change="log"></textarea>
+
+      <h1 style="white-space: pre-line;">{{ msg }}</h1> -->
+
+      <!-- <input type="checkbox" v-model="checked" value="Leon" />
+      <input type="checkbox" v-model="checked" value="Evan" />
+      <input type="checkbox" v-model="checked" value="Lewis" />
+      <input type="checkbox" v-model="checked" value="Emily" /> -->
+
+      <!-- <input type="radio" v-model="selected" value="Leon">
+      <input type="radio" v-model="selected" value="Evan">
+      <input type="radio" v-model="selected" value="Lewis">
+      <input type="radio" v-model="selected" value="Emily"> -->
+
+      <!-- <select v-model="selected">
+        <option value="" disabled>Select one</option>
+        <option v-for="fruit in fruits" :key="fruit.value" :value="fruit.value">{{ fruit.text }}</option>
+      </select> -->
+
+      <input v-model.lazy.number.trim="msg" /> v-model syncs input with data after each input event. use .lazy modifier to sync after onChange event
+      <h1>{{ msg }}</h1>
+    </div>
+    <script>
+      const App = {
+        data() {
+          return {
+            msg: 'Hello vue!',
+            checked: [],
+            selected: 'banana', //I can put default value like this
+            fruits: [
+              {
+                text: '사과',
+                value: 'apple'
+              },
+              {
+                text: '바나나',
+                value: 'banana'
+              },
+              {
+                text: '체리',
+                value: 'cherry'
+              },
+            ]
+          }
+        },
+        watch: {
+          checked(newValue) {
+            // console.log(this.checked) //watch methods automatically get a newValue as a parameter
+            console.log(newValue)
+          },
+          selected(newValue) {
+            console.log(newValue)
+          },
+          msg(newValue) {
+            console.log(newValue)
+            // console.log(typeof newValue)
+          }
+        },
+        methods: {
+          log(e) {
+            console.log(this.msg)
+          }
+        }
+      }
+
+      const vm = Vue.createApp(App).mount('#app')
+    </script>
+  </body>
+  </html>
