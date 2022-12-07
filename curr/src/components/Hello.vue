@@ -1,18 +1,27 @@
 <template>
-  <h1 @click="$emit('please')">
-    {{ message }}
-  </h1>
+  <div>
+    <h1 @click="$emit('please', 9)">
+      Please
+    </h1>
+    <h1 @click="$emit('click')">
+      Click
+    </h1>
+  </div>
 </template>
 
 <script>
 export default {
-  props: {
-    message: {
-      type: String,
-      default: ''
+  emits: {
+    click: null,
+    please: (num) => {
+      if(num > 10) {
+        return true
+      } else {
+        console.log('num is not >10')
+        return false
+      }
     }
-  },
-  emits: ['please']
+  }
 }
 </script>
 
