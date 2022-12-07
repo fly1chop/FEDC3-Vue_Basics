@@ -1,27 +1,19 @@
 <template>
-  <h1 @click="updateMessage">
-    {{ newMessage }}
+  <h1>
+    {{ id }} / {{ title }} / {{ email }} / {{ longPropName }}
   </h1>
-  <h2>
-    {{ name }}
-  </h2>
 </template>
 
 <script>
 export default {
   props: {
-    message: String,
-    name: [String, Number]
-  },
-  data() {
-    return {
-      newMessage: this.message
-    }
-  },
-  methods: {
-    updateMessage() {
-      this.newMessage = 'Good~'
-    }
+    id: Number,
+    title: [String, Number],
+    email: {
+      type: String,
+      default: 'jane@abc.com'
+    },
+    longPropName: String
   }
 }
 </script>
