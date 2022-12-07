@@ -1,17 +1,15 @@
 <template>
-  <h1>Hello</h1>
-  <!-- <slot :hello="123"></slot>
-  <slot name="abc" :goodbye="456"></slot>
-  <slot name="xyz"></slot> -->
+  <h1 ref="hello">Hello</h1>
+  <h1>World</h1>
 </template>
 
 <script>
 export default {
-  created() {
-    console.log('Hello Created')
-  },
-  unmounted() {
-    console.log('Hello Unmounted')
+  mounted() {
+    // const $h1 = document.querySelector('h1')
+    // cannot use $refs to find element in created() of lifecycle because at that point, only js is initialized and not yet connected with html (template)
+    const $h1 = this.$refs.hello
+    console.log($h1)
   }
 }
 </script>

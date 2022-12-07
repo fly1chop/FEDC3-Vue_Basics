@@ -1,25 +1,26 @@
 <template>
-  <button @click="currentComponent = 'Hello'">Hello!</button>
-  <button @click="currentComponent = 'World'">World!</button>
-  <keep-alive>
-    <component :is="currentComponent" />
-  </keep-alive>
+  <h1>{{ msg }}</h1>
+  <Hello ref="hola" />
 </template>
 
 <script>
 import Hello from '~/components/Hello'
-import World from '~/components/World'
 
 export default {
   components: {
-    Hello,
-    World
+    Hello
   },
   data() {
     return {
-      msg: 'Hello Vue!',
-      currentComponent: 'Hello'
+      msg: 'Hello Vue!'
     }
   },
+  mounted() {
+    // To select actual DOM element from Vue component, you need to look into $el property
+    // console.log(this.$refs.hola.$el)
+
+    // When there are multiple refs in component
+    console.log(this.$refs.hola.$refs.hello)
+  }
 }
 </script>
