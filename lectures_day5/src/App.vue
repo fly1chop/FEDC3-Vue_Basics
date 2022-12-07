@@ -1,13 +1,12 @@
 <template>
-  <h1>{{ msg }}</h1>
+  <h1 @click="slotName = 'abc'">{{ msg }}</h1>
   <Hello>
-    <template #abc>
-      <h2>ABC</h2>
+    <template #default="{ hello }">
+      <h2>Hello {{ hello }}</h2>
     </template>
-    <template #xyz>
-      <h2>XYZ</h2>
+    <template #[slotName]="{ goodbye }">
+      <h2>ABC {{ goodbye }}</h2>
     </template>
-    <h2>XYZ</h2>
   </Hello>
 </template>
 
@@ -20,7 +19,8 @@ export default {
   },
   data() {
     return {
-      msg: 'Hello vue! & webpack?',
+      msg: 'Hello Vue!',
+      slotName: 'xyz'
     }
   },
 }

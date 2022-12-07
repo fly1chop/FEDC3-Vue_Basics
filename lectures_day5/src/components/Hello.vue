@@ -1,6 +1,7 @@
 <template>
-  <slot name="abc"></slot>
   <h1>Hello</h1>
+  <slot :hello="123"></slot>
+  <slot name="abc" :goodbye="456"></slot>
   <slot name="xyz"></slot>
 </template>
 
