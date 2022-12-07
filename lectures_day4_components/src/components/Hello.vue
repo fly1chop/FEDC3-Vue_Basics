@@ -2,7 +2,12 @@
   <label>
     <input
       :value="message"
-      @input="$emit('update', $event.target.value)" />
+      @input="$emit('update:message', $event.target.value)" />
+  </label>
+  <label>
+    <input
+      :value="name"
+      @input="$emit('update:name', $event.target.value)" />
   </label>
 </template>
 
@@ -12,7 +17,11 @@ export default {
     message: {
       type: String,
       default: ''
-    }
+    },
+    name: {
+      type: String,
+      default: ''
+    },
   }
 }
 </script>

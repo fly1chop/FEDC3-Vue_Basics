@@ -1,8 +1,9 @@
 <template>
   <h1>{{ msg }}</h1>
+  <h1>{{ name }}</h1>
   <Hello
-    :message="msg"
-    @update="msg = $event" />
+    v-model:message="msg"
+    v-model:name="name" />
 </template>
 
 <script>
@@ -14,7 +15,8 @@ export default {
   },
   data() {
     return {
-      msg: 'Hello Vue!'
+      msg: 'Hello Vue!',
+      name: 'Leon...'
     }
   }
 }
