@@ -1,7 +1,9 @@
 <template>
+  <h1>{{ msg }}</h1>
   <Hello
-    v-bind="post"
-    long-prop-name="this is using kebab-case" />
+    class="hello"
+    style="font-size: 100px;"
+    @click="msg += '!'" />
 </template>
 
 <script>
@@ -13,11 +15,7 @@ export default {
   },
   data() {
     return {
-      post: {
-        id: 1,
-        title: 'Hello Vue!',
-        email: 'hello@gmail.com'
-      }
+      msg: 'Hello Vue!'
     }
   }
 }

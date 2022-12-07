@@ -6,10 +6,6 @@
 
 <script>
 export default {
-  methods: {
-    reverseMsg() {
-      console.log('Click!')
-    }
-  }
+  
 }
 </script>
