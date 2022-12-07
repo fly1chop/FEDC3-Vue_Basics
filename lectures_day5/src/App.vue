@@ -1,33 +1,22 @@
 <template>
-  <div v-if="!isEdit">
-    {{ msg }}
-    <button @click="onEdit">Edit!</button>
-  </div>
-  <div v-else>
-    <input
-      ref="editor" 
-      v-model="msg"
-      @keyup.enter="isEdit = false" />
-  </div>
+  <h1>{{ msg }}</h1>
+  <h1>{{ count }}</h1>
+  <Hello />
 </template>
 
 <script>
+import Hello from '~/components/Hello'
+import sampleMixin from '~/mixins/sample'
 
 export default {
+  components: {
+    Hello
+  },
+  mixins: [sampleMixin],
   data() {
     return {
       isEdit: false,
       msg: 'Hello Vue!'
-    }
-  },
-  created() {
-    this.init()
-    // lifecycles dont support async await, therefore need to create a method
-  },
-  methods: {
-    async init() {
-      const res = await this.$myFetch('https://jsonplaceholder.typicode.com/todos/1')
-      console.log(res, 'done!')
     }
   }
 }
