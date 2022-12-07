@@ -1,30 +1,18 @@
 <template>
-  <!-- <h1
-    :class="$attrs.class"
-    :style="$attrs.style">
-    Hello
+  <h1 @click="$emit('please')">
+    {{ message }}
   </h1>
-  <h2 @click="$attrs.onClick">
-    Haha?!
-  </h2> -->
-  <h1 v-bind="$attrs">
-    Hello
-  </h1>
-  <h2>
-    Haha?!
-  </h2>
 </template>
 
 <script>
 export default {
-  // inheritAttrs: false,
   props: {
-    // style: Object
+    message: {
+      type: String,
+      default: ''
+    }
   },
-  mounted() {
-    // $attrs contains non-prop attributes. therefore, style prop is not included
-    console.log(this.$attrs)
-  }
+  emits: ['please']
 }
 </script>
 
