@@ -1,6 +1,7 @@
 <template>
+  <slot name="abc"></slot>
   <h1>Hello</h1>
-  <slot></slot>
+  <slot name="xyz"></slot>
 </template>
 
 <style scoped lang="scss">
