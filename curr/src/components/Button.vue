@@ -1,5 +1,5 @@
 <template>
-  <button @click="log">
+  <button>
     Click me!
   </button>
 </template>
@@ -7,7 +7,7 @@
 <script>
 export default {
   methods: {
-    log() {
+    reverseMsg() {
       console.log('Click!')
     }
   }
