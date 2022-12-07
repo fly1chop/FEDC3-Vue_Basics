@@ -20,17 +20,14 @@ export default {
       msg: 'Hello Vue!'
     }
   },
+  created() {
+    this.init()
+    // lifecycles dont support async await, therefore need to create a method
+  },
   methods: {
-    onEdit() {
-      this.isEdit = true
-      this.$nextTick(() => {
-        // use nextTick to pass callback to occur after next DOM update is complete
-        this.$refs.editor.focus()
-      })
-      // setTimeout(() => {
-      //   // forcing this step to call stack with setTimeout
-      //   this.$refs.editor.focus()
-      // })
+    async init() {
+      const res = await this.$myFetch('https://jsonplaceholder.typicode.com/todos/1')
+      console.log(res, 'done!')
     }
   }
 }
