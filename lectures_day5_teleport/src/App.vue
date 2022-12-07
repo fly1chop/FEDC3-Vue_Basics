@@ -1,5 +1,10 @@
 <template>
-  <h1>{{ msg }}</h1>
+  <Modal width="300px">
+    <template #activator>
+      <button>On Modal!</button>
+    </template>
+    <h3>App.vue</h3>
+  </Modal>
   <Hello />
 </template>
 
@@ -8,7 +13,7 @@ import Hello from '~/components/Hello'
 
 export default {
   components: {
-    Hello,
+    Hello
   },
   data() {
     return {
