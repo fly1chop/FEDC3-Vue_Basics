@@ -5,7 +5,6 @@ export default {
   state() {
     return {
       isLoggedIn: false,
-
     }
   },
   mutations: {
@@ -14,9 +13,15 @@ export default {
     }
   },
   actions: {
+    initialize({ commit }) {
+      if(localStorage.getItem('isLoggedIn')) {
+        commit('updateLoginStatus', true)
+      }
+    },
     logIn({ commit }, payload) {
       const { id, pw } = payload
       if(id && pw) {
+        localStorage.setItem('isLoggedIn', true)
         commit('updateLoginStatus', true)
         console.log(router)
         const {redirect} = router.currentRoute.value.query
@@ -28,6 +33,7 @@ export default {
       }
     },
     logOut({ commit }) {
+      localStorage.removeItem('isLoggedIn')
       commit('updateLoginStatus', false)
       const {requiresAuth} = router.currentRoute.value.meta
       if(requiresAuth) {
