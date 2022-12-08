@@ -10,10 +10,12 @@ export default createRouter({
   routes: [
     {
       path: '/',
+      name: 'home',
       component: Home
     },
     {
       path: '/about',
+      name: 'about',
       component: About
     },
     {
@@ -22,6 +24,7 @@ export default createRouter({
       children: [
         {
           path: ':id',
+          name: 'docsId',
           component: DocsId
         }
       ]

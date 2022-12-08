@@ -5,10 +5,18 @@
   <RouterLink to="/about">
     About
   </RouterLink>
-  <button @click="$router.push('/')">
+  <RouterLink
+    :to="{
+      name: 'docsId', 
+      params: { id: '7777'}, 
+      query: { name: 'Jane', age: 19, email: 'janedoe@123.com'}
+    }">
+    DocId
+  </RouterLink>
+  <button @click="$router.push({name: 'home'})">
     Home
   </button>
-  <button @click="$router.push('/about')">
+  <button @click="$router.push({name: 'about'})">
     About
   </button>
   <RouterView />
