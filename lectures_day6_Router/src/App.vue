@@ -1,15 +1,23 @@
 <template>
-  <h1>{{ msg }}</h1>
-  <Hello />
+  <RouterLink to="/">
+    Home
+  </RouterLink>
+  <RouterLink to="/about">
+    About
+  </RouterLink>
+  <button @click="$router.push('/')">
+    Home
+  </button>
+  <button @click="$router.push('/about')">
+    About
+  </button>
+  <RouterView />
 </template>
 
 <script>
-import Hello from '~/components/Hello'
+
 
 export default {
-  components: {
-    Hello,
-  },
   data() {
     return {
       msg: 'Hello vue! & webpack?',
