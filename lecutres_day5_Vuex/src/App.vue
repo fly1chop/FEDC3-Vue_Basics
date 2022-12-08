@@ -1,19 +1,16 @@
 <template>
-  <h1>{{ msg }}</h1>
   <Hello />
+  <World />
 </template>
 
 <script>
 import Hello from '~/components/Hello'
+import World from '~/components/World'
 
 export default {
   components: {
     Hello,
-  },
-  data() {
-    return {
-      msg: 'Hello vue! & webpack?',
-    }
-  },
+    World
+  }
 }
 </script>
