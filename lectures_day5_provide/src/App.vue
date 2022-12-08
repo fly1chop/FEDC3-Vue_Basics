@@ -1,19 +1,27 @@
 <template>
-  <h1>{{ msg }}</h1>
-  <Hello />
+  <h1 @click="msg += '!!'">
+    {{ msg }}
+  </h1>
+  <Parent />
 </template>
 
 <script>
-import Hello from '~/components/Hello'
+import Parent from '~/components/Parent'
+import { computed } from 'vue'
 
 export default {
   components: {
-    Hello,
+    Parent,
+  },
+  provide() {
+    return {
+      msg: computed(() => this.msg) //use computed method to return reactive ref object for the returned value from getter
+    }
   },
   data() {
     return {
-      msg: 'Hello vue! & webpack?',
+      msg: 'Hello vue!',
     }
-  },
+  }
 }
 </script>
