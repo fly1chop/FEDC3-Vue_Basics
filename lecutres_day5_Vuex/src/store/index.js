@@ -1,5 +1,6 @@
 import { reactive } from 'vue'
 
+// vue components will render data from state
 export const state = reactive({
   msg: 'Hello Vue?!',
   count: 1
@@ -12,6 +13,7 @@ export const getters = {
   }
 }
 
+// simply mutate & manage state changes (incoming commits from actions)
 export const mutations = {
   increaseCount() {
     state.count++
@@ -24,6 +26,8 @@ export const mutations = {
   }
 }
 
+// vue components dispatch actions to call for state change
+// communicate with async backend API and send commits for mutations
 export const actions = {
   async fetchTodo(id) {
     const todo = await fetch(`https://jsonplaceholder.typicode.com/todos/${id}`)
